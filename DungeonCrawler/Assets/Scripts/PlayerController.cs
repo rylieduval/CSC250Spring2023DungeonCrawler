@@ -7,9 +7,14 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
     public GameObject northExit, southExit, eastExit, westExit;
+    
+
     public float movementSpeed = 40.0f;
 
     private bool moveBool = true;
+    private bool moveToExit = true;
+    private bool centerIsReal = false;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -18,13 +23,55 @@ public class PlayerController : MonoBehaviour
         print(MasterData.count);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Exit")
         {
-            SceneManager.LoadScene("SampleScene");
+            if (other.gameObject == this.northExit && moveToExit == true)
+            {
+                moveToExit = false;
+                centerIsReal = true;
+                MasterData.whereDidIComeFrom = "north";
+                this.rb.transform.position = this.southExit.transform.position;
+                this.rb.AddForce(this.northExit.transform.position * movementSpeed);
+
+            }
+            if (other.gameObject == this.southExit && moveToExit == true)
+            {
+                moveToExit = false;
+                centerIsReal = true;
+                MasterData.whereDidIComeFrom = "south";
+                this.rb.transform.position = this.northExit.transform.position;
+                this.rb.AddForce(this.southExit.transform.position * movementSpeed);
+            }
+            if (other.gameObject == this.westExit && moveToExit == true)
+            {
+                moveToExit = false;
+                centerIsReal = true;
+                MasterData.whereDidIComeFrom = "west";
+                this.rb.transform.position = this.eastExit.transform.position;
+                this.rb.AddForce(this.westExit.transform.position * movementSpeed);
+            }
+            if (other.gameObject == this.eastExit && moveToExit == true)
+            {
+                moveToExit = false;
+                centerIsReal = true;
+                MasterData.whereDidIComeFrom = "east";
+                this.rb.transform.position = this.westExit.transform.position;
+                this.rb.AddForce(this.eastExit.transform.position * movementSpeed);
+            }
             MasterData.count++;
             moveBool = true;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Center" && centerIsReal == true)
+        {
+            SceneManager.LoadScene("SampleScene");
+            moveToExit = true;
+            centerIsReal = false;
         }
     }
 
@@ -54,6 +101,5 @@ public class PlayerController : MonoBehaviour
                 moveBool = false;
             }
         }
-
     }
 }
