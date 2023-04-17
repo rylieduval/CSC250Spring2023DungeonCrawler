@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,15 +12,13 @@ public class PlayerController : MonoBehaviour
     public GameObject westStart, eastStart, northStart, southStart;
     public float movementSpeed = 40.0f;
     private bool isMoving;
+    private int randomNumber;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < 10; i++)
-        {
-            print(Random.Range(1.0f, 10.0f));
-        }
-
         this.updateExits();
 
         this.rb = this.GetComponent<Rigidbody>();
@@ -77,14 +77,20 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Center"))
         {
             this.rb.velocity = Vector3.zero;
-            this.rb.Sleep();
-            
+            this.rb.Sleep(); 
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Exit") && MasterData.isExiting)
+        randomNumber = Random.Range(1, 11);
+
+        if (other.gameObject.CompareTag("Exit") && randomNumber <= 3 )
+        {
+            SceneManager.LoadScene("FightScene");
+
+        }
+        else if (other.gameObject.CompareTag("Exit") && MasterData.isExiting)
         {
             if (other.gameObject == this.northExit)
             {
@@ -109,6 +115,7 @@ public class PlayerController : MonoBehaviour
         {
             MasterData.isExiting = true;
         }
+        
     }
  
     void Update()

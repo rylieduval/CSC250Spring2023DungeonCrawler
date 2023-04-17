@@ -6,6 +6,7 @@ public class MasterData
     private static bool isDungeonSetup = false;
     public static Dungeon cs = null;
     public static Player p = null;
+    
 
     public static void setupDungeon()
     {

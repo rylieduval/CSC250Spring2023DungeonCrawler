@@ -36,8 +36,6 @@ public class Room
         return false;
     }
 
-
-
     public void takeExit(Player who, string direction)
     {
         Exit theExitToTake = null;
