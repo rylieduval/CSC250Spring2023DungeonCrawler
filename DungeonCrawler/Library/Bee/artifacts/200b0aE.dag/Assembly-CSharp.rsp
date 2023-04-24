@@ -344,12 +344,15 @@
 -r:"Library/Bee/artifacts/200b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/200b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/200b0aE.dag/UnityEngine.UI.ref.dll"
+"Assets/Scripts/centerController.cs"
 "Assets/Scripts/DungeonBackendCode/Dungeon.cs"
 "Assets/Scripts/DungeonBackendCode/Exit.cs"
 "Assets/Scripts/DungeonBackendCode/Player.cs"
 "Assets/Scripts/DungeonBackendCode/Room.cs"
 "Assets/Scripts/DungeonSetup.cs"
+"Assets/Scripts/FightPlayerController.cs"
 "Assets/Scripts/MasterData.cs"
+"Assets/Scripts/MonsterTrigger.cs"
 "Assets/Scripts/PlayerController.cs"
 -langversion:9.0
 

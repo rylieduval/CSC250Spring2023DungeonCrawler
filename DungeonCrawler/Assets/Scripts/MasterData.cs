@@ -7,6 +7,7 @@ public class MasterData
     public static Dungeon cs = null;
     public static Player p = null;
     
+    
 
     public static void setupDungeon()
     {

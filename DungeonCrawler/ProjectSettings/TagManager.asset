@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Exit
   - Center
+  - Monster
+  - PSS
   layers:
   - Default
   - TransparentFX

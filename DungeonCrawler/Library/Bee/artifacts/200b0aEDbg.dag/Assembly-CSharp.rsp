@@ -352,6 +352,7 @@
 "Assets/Scripts/DungeonSetup.cs"
 "Assets/Scripts/FightPlayerController.cs"
 "Assets/Scripts/MasterData.cs"
+"Assets/Scripts/MonsterTrigger.cs"
 "Assets/Scripts/PlayerController.cs"
 -langversion:9.0
 
